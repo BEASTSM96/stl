@@ -1,6 +1,8 @@
-
-#include <iostream>
 #include "vector.h"
+#include "pointer.h"
+
+//C Stuff(MSVC)
+#include <stdio.h>
 
 class Test
 {
@@ -16,32 +18,66 @@ protected:
 private:
 };
 
-int main() 
+class Testing : Test
 {
-	std::vector<std::string> m_Test;
-	m_Test.push_back( "Test\n" );
-	m_Test.push_back( "Yes\n" );
-	m_Test.push_back( "Epic\n" );
-	m_Test.push_back( "Test\n" );
-	m_Test.push_back( "Yes\n" );
-	m_Test.push_back( "Epic\n" );
-	m_Test.push_back( "Test\n" );
-	m_Test.push_back( "Yes\n" );
-	m_Test.push_back( "Epic\n" );
-	m_Test.push_back( "Test\n" );
-	m_Test.push_back( "Yes\n" );
-	m_Test.push_back( "Epic\n" );
-	m_Test.push_back( "Test\n" );
-	m_Test.push_back( "Yes\n" );
-	m_Test.push_back( "Epic\n" );
+public:
+	Testing() { }
+	~Testing() { }
 
-	printf( "%s", m_Test[ 55 ].c_str());
+protected:
+
+
+private:
+};
+
+class Class
+{
+public:
+	Class() { }
+	~Class() { }
+
+protected:
+
+
+private:
+};
+
+int main()
+{
+	std::vector<const char*> m_Test;
+	m_Test.push_back( "Test\n" );
+	m_Test.push_back( "Yes\n" );
+	m_Test.push_back( "Epic\n" );
+	m_Test.push_back( "Test\n" );
+	m_Test.push_back( "Yes\n" );
+	m_Test.push_back( "Epic\n" );
+	m_Test.push_back( "Test\n" );
+	m_Test.push_back( "Yes\n" );
+	m_Test.push_back( "Epic\n" );
+	m_Test.push_back( "Test\n" );
+	m_Test.push_back( "Yes\n" );
+	m_Test.push_back( "Epic\n" );
+	m_Test.push_back( "Test\n" );
+	m_Test.push_back( "Yes\n" );
+	m_Test.push_back( "Epic\n" );
 
 	for ( size_t i = 0; i < m_Test.size(); i++ )
 	{
-		printf( "%s", m_Test[ i ].c_str() );
+		printf( "%s", m_Test[ i ] );
 	}
 
-	std::cin.get();
+	printf( "is_pointer_v\n" );
 
-} 
+	static_assert( std::IsPointerV<Test*> );
+	//static_assert( std::IsPointerV<Test> );
+
+	printf( "is_base_of_v\n" );
+
+	static_assert( std::IsBaseOfV<Test, Testing> );
+	//static_assert( std::IsBaseOf<Test, Class> );
+
+	printf( "is_same_v\n" );
+
+	static_assert( std::IsSameV<Test, Test> );
+	//static_assert( std::IsSameV<Test, Testing> );
+}

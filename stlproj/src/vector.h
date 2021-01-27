@@ -1,6 +1,8 @@
 #pragma once
 
 #include "core.h"
+//TEMP MSVC
+#include <type_traits>
 
 #ifdef STL_USE_STD_NAMESPACE
 namespace std {
