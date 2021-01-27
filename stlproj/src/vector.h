@@ -56,7 +56,7 @@ public:
 	{
 		if( index >= m_Size )
 		{
-			_STL_ASSERT_(false, "vector out of range!");
+			_STL_ASSERT_( false, "vector out of range!" );
 		}
 		return m_Data[ index ];
 	}
